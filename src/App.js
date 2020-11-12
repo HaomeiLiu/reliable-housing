@@ -25,17 +25,18 @@ function App() {
           <Route path="/" exact={true}>
             <HomePage />
           </Route>
-          {/* <Route path="/profile" exact={true}>
-            <Profile />
-          </Route>
-          <Route path="/search/:search" exact={true}>
-            <Search />
-          </Route>
-          <Route path="/detail/:id" exact={true}>
-            <SearchDetail />
+          <Route path="/search" exact={true}>
+            <SearchPage />
           </Route>
           <Route path="/create" exact={true}>
             <CreateReview />
+          </Route>
+          {/* <Route path="/detail/:id" exact={true}>
+            <SearchDetail />
+          </Route>
+          
+          <Route path="/profile" exact={true}>
+            <ProfilePage />
           </Route>
           <Route path="*">
             <PageNotFound />

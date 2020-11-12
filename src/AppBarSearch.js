@@ -73,7 +73,7 @@ export default function AppBarSearch() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit">
+          <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={event => window.location.href='/'}>
             <MenuIcon/>
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
