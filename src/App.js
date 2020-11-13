@@ -31,9 +31,10 @@ function App() {
           <Route path="/create" exact={true}>
             <CreateReview />
           </Route>
-          {/* <Route path="/detail/:id" exact={true}>
+          <Route path="/detail/:id" exact={true}>
             <SearchDetail />
           </Route>
+          {/* 
           
           <Route path="/profile" exact={true}>
             <ProfilePage />
