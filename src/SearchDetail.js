@@ -49,7 +49,6 @@ export default function SearchDetail() {
   });
 
   useEffect(() => {
-      console.log("hi");
     fetchHousing(id).then((response) => {
       console.log(response);
       setHousing(response);

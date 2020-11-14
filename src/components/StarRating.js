@@ -8,10 +8,10 @@ import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-      marginLeft: theme.spacing(12),
-      marginRight: theme.spacing(12),
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2),
+    marginLeft: theme.spacing(12),
+    marginRight: theme.spacing(12),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   root: {
     flexGrow: 1,
@@ -58,5 +58,63 @@ export function FixStarRating({ review }) {
         </Paper>
       </div>
     </Grid>
+  );
+}
+
+export function VarStarRating() {
+  const [generalValue, setGeneralValue] = useState(0);
+  const [priceValue, setPriceValue] = useState(0);
+  const [distanceValue, setDistanceValue] = useState(0);
+  const [safetyValue, setSafetyValue] = useState(0);
+
+  return (
+    <div>
+      <Grid container>
+        <Grid item xs={6}>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend">General</Typography>
+            <Rating
+              name="general-rating"
+              value={generalValue}
+              onChange={(event, newValue) => {
+                setGeneralValue(newValue);
+              }}
+            />
+          </Box>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend">Price</Typography>
+            <Rating
+              name="price-rating"
+              value={priceValue}
+              onChange={(event, newValue) => {
+                setPriceValue(newValue);
+              }}
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend">Distance</Typography>
+            <Rating
+              name="distance-rating"
+              value={distanceValue}
+              onChange={(event, newValue) => {
+                setDistanceValue(newValue);
+              }}
+            />
+          </Box>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend">Safety</Typography>
+            <Rating
+              name="safety-rating"
+              value={safetyValue}
+              onChange={(event, newValue) => {
+                setSafetyValue(newValue);
+              }}
+            />
+          </Box>
+        </Grid>
+      </Grid>
+    </div>
   );
 }
