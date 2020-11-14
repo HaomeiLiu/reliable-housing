@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBarSearch from './AppBarSearch';
+import AppBarSearch from './components/AppBarSearch';
 
 export default function CreateReview(){
     return(

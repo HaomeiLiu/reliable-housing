@@ -1,0 +1,66 @@
+{
+  "housings": [
+    {
+      "id": 1,
+      "address": "72 Street",
+      "description": "A good house",
+      "reviews": [
+        {
+          "user_id": 18,
+          "general": 4,
+          "price": 3,
+          "distance": 2,
+          "safety": 5
+        },
+        {
+          "user_id": 16,
+          "general": 3,
+          "price": 3,
+          "distance": 2,
+          "safety": 4
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "address": "33 Street",
+      "description": "a cheap house",
+      "reviews": [
+        {
+          "user_id": 18,
+          "general": 4,
+          "price": 3,
+          "distance": 2,
+          "safety": 5
+        },
+        {
+          "user_id": 16,
+          "general": 3,
+          "price": 3,
+          "distance": 2,
+          "safety": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "address": "88 Street",
+      "description": "a 3rd house",
+      "reviews": [
+        {
+          "user_id": 18,
+          "general": 4,
+          "price": 3,
+          "distance": 2,
+          "safety": 5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "address": "55 Street",
+      "description": "a 55 house",
+      "reviews": []
+    }
+  ]
+}

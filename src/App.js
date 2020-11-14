@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState } from "react";
-import AppBarSearch from "./AppBarSearch";
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,6 +28,9 @@ function App() {
             <SearchPage />
           </Route>
           <Route path="/create" exact={true}>
+            <CreateReview />
+          </Route>
+          <Route path="/create/:id" exact={true}>
             <CreateReview />
           </Route>
           <Route path="/detail/:id" exact={true}>

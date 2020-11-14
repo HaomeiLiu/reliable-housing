@@ -1,30 +1,13 @@
 import * as React from "react";
-import AppBarSearch from "./AppBarSearch";
+import AppBarSearch from "./components/AppBarSearch";
 import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
-import { CardActionArea } from "@material-ui/core";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import CardView from "./components/CardView";
+import Footer from "./components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -41,24 +24,42 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
-  cardMedia: {
-    paddingTop: "56.25%", // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const housings = [
+  {
+    id: 1,
+    address: "72 Street",
+    user_id: 2,
+    rating: 4,
+    cost: 1350,
+    description: "A good house",
+  },
+  {
+    id: 2,
+    address: "33 Street",
+    user_id: 4,
+    rating: 2,
+    cost: 800,
+    description: "a cheap house",
+  },
+  {
+    id: 3,
+    address: "88 Street",
+    user_id: 4,
+    rating: 2,
+    cost: 800,
+    description: "a 3rd house",
+  },
+  {
+    id: 4,
+    address: "55 Street",
+    user_id: 4,
+    rating: 2,
+    cost: 800,
+    description: "a 55 house",
+  },
+];
 
 function handleSearchClick() {
   window.location.href = "/search";
@@ -116,7 +117,7 @@ export default function Home() {
                       color="secondary"
                       onClick={handleCreateClick}
                     >
-                      Write a Review!
+                      Write a Review
                     </Button>
                   </Grid>
                 </Grid>
@@ -128,52 +129,10 @@ export default function Home() {
               <Typography variant="h3">Featured Housing</Typography>
             </Grid>
             {/* End hero unit */}
-            <Grid container spacing={4}>
-              {cards.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardActionArea>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                      <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Heading
-                        </Typography>
-                        <Typography>
-                          This is a media card. You can use this section to
-                          describe the content.
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button size="small">View</Button>
-                      <Button size="small">Edit</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
+            <CardView housings={housings}/>
           </Container>
         </main>
-        {/* Footer */}
-        <footer className={classes.footer}>
-          <Typography variant="h6" align="center" gutterBottom>
-            Reliable Housing
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            component="p"
-          >
-            Find your housing near USC, today.
-          </Typography>
-          <Copyright />
-        </footer>
-        {/* End footer */}
+        <Footer />
       </React.Fragment>
     </>
   );
