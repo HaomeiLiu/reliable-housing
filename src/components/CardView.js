@@ -48,11 +48,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function handleCardClick(housing) {
-  window.location.href = `/detail/:${housing.id}`;
+  window.location.href = `/detail/${housing.id}`;
 }
 
 function handleReviewClick(housing) {
-    window.location.href = `/create/:${housing.id}`;
+    window.location.href = `/create/${housing.id}`;
 }
 
 function handleFavClick(housing){
