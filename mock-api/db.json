@@ -39,6 +39,20 @@
           "price": 3,
           "distance": 2,
           "safety": 4
+        },
+        {
+          "general": 5,
+          "price": 3,
+          "distance": 2,
+          "safety": 1,
+          "user_id": "admin"
+        },
+        {
+          "general": 5,
+          "price": 3,
+          "distance": 2,
+          "safety": 1,
+          "user_id": "admin"
         }
       ]
     },
@@ -61,6 +75,55 @@
       "address": "55 Street",
       "description": "a 55 house",
       "reviews": []
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "user_id": "admin",
+      "reviews": [
+        1,
+        2
+      ],
+      "fav": [
+        1,
+        2
+      ],
+      "pass": "111111"
+    },
+    {
+      "id": 18,
+      "user_id": "test 1",
+      "reviews": [
+        1,
+        2,
+        3
+      ],
+      "fav": [
+        1
+      ],
+      "pass": "111111"
+    },
+    {
+      "user_id": "test 2",
+      "pass": "111111",
+      "fav": [],
+      "reviws": [],
+      "id": 19
+    },
+    {
+      "user_id": "test 3",
+      "pass": "111111",
+      "fav": [],
+      "reviws": [],
+      "id": 20
+    },
+    {
+      "user_id": "test 4",
+      "pass": "111111",
+      "fav": [],
+      "reviws": [],
+      "id": 21
     }
   ]
 }

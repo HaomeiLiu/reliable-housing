@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ButtonAppBar from "./components/ButtonAppBar";
+import AppBarSearch from "./components/AppBarSearch";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,6 +11,7 @@ import { Paper } from "@material-ui/core";
 import Footer from "./components/Footer";
 import { FixStarRating } from "./components/StarRating";
 import Button from "@material-ui/core/Button";
+import {useCookies} from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
   subTitle: {
@@ -57,7 +58,7 @@ export default function SearchDetail() {
 
   return (
     <>
-      <ButtonAppBar />
+      <AppBarSearch />
       <React.Fragment>
         <CssBaseline />
         <main>

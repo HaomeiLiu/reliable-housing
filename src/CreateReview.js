@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import { useParams } from "react-router-dom";
 import { fetchHousing } from "./api";
 import { VarStarRating } from "./components/StarRating";
+import AppBarSearch from "./components/AppBarSearch";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -50,6 +51,11 @@ export default function CreateReview() {
   const { id } = useParams();
 
   const [housing, setHousing] = useState({});
+  // const [generalValue, setGeneralValue] = useState(0);
+  // const [priceValue, setPriceValue] = useState(0);
+  // const [distanceValue, setDistanceValue] = useState(0);
+  // const [safetyValue, setSafetyValue] = useState(0);
+  const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     fetchHousing(id).then((response) => {
@@ -58,10 +64,14 @@ export default function CreateReview() {
     });
   }, [id]);
 
+  function handleSubmit(){
+    setSubmit(true);
+  }
+
   return (
     <React.Fragment>
       <CssBaseline />
-      <ButtonAppBar />
+      <AppBarSearch />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
@@ -69,7 +79,7 @@ export default function CreateReview() {
           </Typography>
           <React.Fragment>
             <div className={classes.rating}>
-              <VarStarRating />
+              <VarStarRating submit={submit} housing={housing}/>
             </div>
           </React.Fragment>
           <div className={classes.buttons}>
@@ -77,6 +87,7 @@ export default function CreateReview() {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick={handleSubmit}
             >
               Submit
             </Button>

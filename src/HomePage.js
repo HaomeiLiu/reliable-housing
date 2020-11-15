@@ -8,6 +8,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import CardView from "./components/CardView";
 import Footer from "./components/Footer";
+import { useCookies } from "react-cookie";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -23,6 +27,17 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
   },
 }));
 
@@ -65,12 +80,26 @@ function handleSearchClick() {
   window.location.href = "/search";
 }
 
-function handleCreateClick() {
-  window.location.href = "/create";
-}
-
-export default function Home() {
+export default function HomePage() {
   const classes = useStyles();
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [login, setLogin] = React.useState(false);
+
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (cookies.user_id) {
+      setLogin(true);
+    }
+  }, [cookies]);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -97,8 +126,15 @@ export default function Home() {
                 paragraph
               >
                 Provide transparent off-campus housing information for USC
-                students seeking a place to live. Write a review today to help
-                your peers to find better housing!
+                students seeking a place to live.
+              </Typography>
+              <Typography
+                variant="h5"
+                align="center"
+                color="textSecondary"
+                paragraph
+              >
+                Create an accout or login to add housing to your favorite, or create a review!
               </Typography>
               <div className={classes.heroButtons}>
                 <Grid container spacing={10} justifycontent="center">
@@ -115,10 +151,35 @@ export default function Home() {
                     <Button
                       variant="outlined"
                       color="secondary"
-                      onClick={handleCreateClick}
+                      onClick={handleOpen}
                     >
                       Write a Review
                     </Button>
+                    <Modal
+                      aria-labelledby="transition-modal-title"
+                      aria-describedby="transition-modal-description"
+                      className={classes.modal}
+                      open={open}
+                      onClose={handleClose}
+                      closeAfterTransition
+                      BackdropComponent={Backdrop}
+                      BackdropProps={{ timeout: 500 }}
+                    >
+                      <Fade in={open}>
+                        <div className={classes.paper}>
+                          <Typography id="transition-modal-title" variant="h6">
+                            Create a Review
+                          </Typography>
+                          <Typography
+                            id="transition-modal-description"
+                            variant="body1"
+                          >
+                            Search for the housing you have lived in, and write
+                            a review! 
+                          </Typography>
+                        </div>
+                      </Fade>
+                    </Modal>
                   </Grid>
                 </Grid>
               </div>
@@ -129,7 +190,7 @@ export default function Home() {
               <Typography variant="h3">Featured Housing</Typography>
             </Grid>
             {/* End hero unit */}
-            <CardView housings={housings}/>
+            <CardView housings={housings} login={login} />
           </Container>
         </main>
         <Footer />

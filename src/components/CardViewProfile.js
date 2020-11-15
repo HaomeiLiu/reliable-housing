@@ -57,7 +57,15 @@ function handleReviewClick(housing) {
   window.location.href = `/create/${housing.id}`;
 }
 
-export default function CardView({ housings, login }) {
+function removeArray(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
+
+export default function CardViewProfile({ housings, login }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const classes = useStyles();
   const [member, setMember] = React.useState({
@@ -66,27 +74,26 @@ export default function CardView({ housings, login }) {
   React.useEffect(() => {
     fetchMember(cookies.user_id_db).then((response) => {
       setMember(response);
-      console.log(member);
     });
   }, [cookies]);
 
-  function handleFavClick(housing) {
-    const newFavs = member.fav;
-    newFavs.push(housing.id);
-    console.log(newFavs);
+  function handleRemoveClick(housing) {
+    const newFavs = removeArray(member.fav, housing.id);
     addFav({
       ...member,
-      fav: newFavs,
+      reviews: newFavs,
     }).then((response) => {
       setMember(response);
     });
+    window.location.href = "/profile";
   }
+
   return (
     <Grid container spacing={4}>
       {housings.map((housing) => (
-        <Grid item key={housing.id} xs={12} sm={6} md={4}>
+        <Grid item key={housing[0].id} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
-            <CardActionArea onClick={() => handleCardClick(housing)}>
+            <CardActionArea onClick={() => handleCardClick(housing[0])}>
               <CardMedia
                 className={classes.cardMedia}
                 image="https://source.unsplash.com/random"
@@ -94,36 +101,25 @@ export default function CardView({ housings, login }) {
               />
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  {housing.address}
+                  {housing[0].address}
                 </Typography>
-                <Typography>{housing.description}</Typography>
+                <Typography>{housing[0].description}</Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
               <Button
                 size="small"
-                disabled={
-                  login
-                    ? (member.fav.filter((f) => {
-                        return f === housing.id;
-                      }).length === 0
-                      ? false
-                      : true)
-                    : true
-                }
-                onClick={() => handleFavClick(housing)}
+                onClick={() => handleRemoveClick(housing[0])}
               >
                 <div className={classes.favIcon}>
                   <Favorite />
                 </div>
-                {(member.fav.filter((f) => {
-                        return f === housing.id;
-                      })).length === 0 ? "Fav" : "Added"}
+                Remove
               </Button>
               <Button
                 size="small"
                 disabled={!login}
-                onClick={() => handleReviewClick(housing)}
+                onClick={() => handleReviewClick(housing[0])}
               >
                 <div className={classes.createIcon}>
                   <Create />

@@ -5,6 +5,8 @@ import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import { useCookies } from "react-cookie";
+import { postReview } from "../api";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 export function FixStarRating({ review }) {
   const classes = useStyles();
+
   return (
     <Grid container className={classes.container}>
       <div className={classes.root}>
@@ -61,11 +64,31 @@ export function FixStarRating({ review }) {
   );
 }
 
-export function VarStarRating() {
+export function VarStarRating({submit, housing}) {
   const [generalValue, setGeneralValue] = useState(0);
   const [priceValue, setPriceValue] = useState(0);
   const [distanceValue, setDistanceValue] = useState(0);
   const [safetyValue, setSafetyValue] = useState(0);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  if(submit){
+    const newReviews = housing.reviews;
+    newReviews.push({
+      general: generalValue,
+      price: priceValue,
+      distance: distanceValue,
+      safety: safetyValue,
+      user_id: cookies.user_id,
+    });
+    postReview({
+      ...housing,
+      id: housing.id,
+      reviews: newReviews,
+    }).then(()=>{
+      window.location.href = `/detail/${housing.id}`;
+    })
+    console.log(newReviews);
+  }
 
   return (
     <div>

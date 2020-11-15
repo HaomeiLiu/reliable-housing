@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppBarSearch from "./components/AppBarSearch";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -7,6 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import CardView from "./components/CardView";
 import Footer from "./components/Footer";
+import {useCookies} from "react-cookie";
+import {fetchHousings, fetchMatchHousing} from "./api";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   subTitle: {
@@ -20,43 +23,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const housings = [
-  {
-    id: 1,
-    address: "72 Street",
-    user_id: 2,
-    rating: 4,
-    cost: 1350,
-    description: "A good house",
-  },
-  {
-    id: 2,
-    address: "33 Street",
-    user_id: 4,
-    rating: 2,
-    cost: 800,
-    description: "a cheap house",
-  },
-  {
-    id: 3,
-    address: "88 Street",
-    user_id: 4,
-    rating: 2,
-    cost: 800,
-    description: "a 3rd house",
-  },
-  {
-    id: 4,
-    address: "55 Street",
-    user_id: 4,
-    rating: 2,
-    cost: 800,
-    description: "a 55 house",
-  },
-];
-
 export default function SearchPage() {
   const classes = useStyles();
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [login, setLogin] = useState(false);
+  const [housings, setHousings] = useState([]);
+  const key = useLocation().search;
+  
+  useEffect(()=>{
+    if (cookies.user_id) {
+      setLogin(true);
+    }
+    if(key === ""){
+      fetchHousings().then((response)=>{
+        setHousings(response);
+      })
+    }
+    else{
+      fetchMatchHousing(key).then((response) => {
+        setHousings(response);
+      })
+    }
+  }, []);
   return (
     <>
       <AppBarSearch />
@@ -68,7 +56,7 @@ export default function SearchPage() {
           </Grid>
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
-            <CardView housings={housings} />
+            <CardView housings={housings} login={login}/>
           </Container>
         </main>
         <Footer />
