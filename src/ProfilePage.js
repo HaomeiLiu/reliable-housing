@@ -79,7 +79,7 @@ export default function Profile() {
     <>
       <AppBarSearch />
       <div className={classes.btnCont}>
-      <Button fullwidth onClick={handleLogoutClick} variant="outlined" color="secondary" className={classes.btn}>Logout</Button>
+      <Button onClick={handleLogoutClick} variant="outlined" color="secondary" className={classes.btn}>Logout</Button>
       </div>
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4} className={classes.subTitle}>

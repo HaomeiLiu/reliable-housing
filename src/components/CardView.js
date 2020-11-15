@@ -89,7 +89,7 @@ export default function CardView({ housings, login }) {
             <CardActionArea onClick={() => handleCardClick(housing)}>
               <CardMedia
                 className={classes.cardMedia}
-                image="https://source.unsplash.com/random"
+                image={housing.img}
                 title="Image title"
               />
               <CardContent className={classes.cardContent}>

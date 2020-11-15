@@ -72,7 +72,7 @@ export default function SearchDetail() {
               <Container maxWidth="md" className={classes.detailGrid}>
                 <Grid container spacing={3}>
                   <Grid item xs={6}>
-                    <img alt={housing.address} src="/assets/eg.jpg" />
+                    <img alt={housing.address} src={housing.img} />
                   </Grid>
                   <Grid item xs={6}>
                     <Typography gutterBottom variant="h4">
