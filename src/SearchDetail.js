@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     margin: theme.spacing(3),
   },
+  img: {
+    maxWidth: '90%',
+  },
 }));
 
 function handleCreateClick(id){
@@ -77,7 +80,7 @@ export default function SearchDetail() {
               <Container maxWidth="md" className={classes.detailGrid}>
                 <Grid container spacing={3}>
                   <Grid item xs={6}>
-                    <img alt={housing.address} src={housing.img} />
+                    <img className={classes.img} alt={housing.address} src={housing.img} />
                   </Grid>
                   <Grid item xs={6}>
                     <Typography gutterBottom variant="h4">
