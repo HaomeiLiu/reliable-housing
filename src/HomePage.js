@@ -12,6 +12,9 @@ import { useCookies } from "react-cookie";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { Helmet } from "react-helmet";
+
+const TITLE = "Home";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -44,35 +47,77 @@ const useStyles = makeStyles((theme) => ({
 const housings = [
   {
     id: 1,
-    address: "72 Street",
-    user_id: 2,
-    rating: 4,
-    cost: 1350,
-    description: "A good house",
+    address: "The Kenmore - 1331 W. 72 Street",
+    description:
+      "Near USC campus, 15 minutes walk. 2B2B and 3B3B available. Within DPS area, utilities included.",
+    img:
+      "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/1.jpg",
+    reviews: [
+      {
+        user_id: 18,
+        general: 4,
+        price: 3,
+        distance: 2,
+        safety: 5,
+      },
+      {
+        user_id: 16,
+        general: 3,
+        price: 3,
+        distance: 2,
+        safety: 4,
+      },
+    ],
   },
   {
     id: 2,
-    address: "33 Street",
-    user_id: 4,
-    rating: 2,
-    cost: 800,
-    description: "a cheap house",
+    address: "Appolo - 1033 E. 21 Place",
+    description:
+      "A warm home to stay in. Pets allowed. Near CVS, Target, and DMV.",
+    img:
+      "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/2.jpg",
+    reviews: [
+      {
+        user_id: 18,
+        general: 4,
+        price: 3,
+        distance: 2,
+        safety: 5,
+      },
+      {
+        user_id: 16,
+        general: 3,
+        price: 3,
+        distance: 2,
+        safety: 4,
+      },
+    ],
   },
   {
     id: 3,
-    address: "88 Street",
-    user_id: 4,
-    rating: 2,
-    cost: 800,
-    description: "a 3rd house",
+    address: "ABC House - 1290 W. 88 Street",
+    description:
+      "A 3rd house for testing. A very welcomed place among students who like to party.",
+    img:
+      "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/3.jpg",
+    reviews: [
+      {
+        user_id: 18,
+        general: 4,
+        price: 3,
+        distance: 2,
+        safety: 5,
+      },
+    ],
   },
   {
     id: 4,
-    address: "55 Street",
-    user_id: 4,
-    rating: 2,
-    cost: 800,
-    description: "a 55 house",
+    address: "Cool Apartment - 1632 W. 55 Street",
+    description:
+      "A 55 house. Located in downtown LA, you can enjoy the vibe of the city.",
+    img:
+      "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/4.jpg",
+    reviews: [],
   },
 ];
 
@@ -103,6 +148,9 @@ export default function HomePage() {
 
   return (
     <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <AppBarSearch />
       <React.Fragment>
         <CssBaseline />
@@ -134,7 +182,8 @@ export default function HomePage() {
                 color="textSecondary"
                 paragraph
               >
-                Create an accout or login to add housing to your favorite, or create a review!
+                Create an accout or login to add housing to your favorite, or
+                create a review!
               </Typography>
               <div className={classes.heroButtons}>
                 <Grid container spacing={10} justifycontent="center">
@@ -175,7 +224,7 @@ export default function HomePage() {
                             variant="body1"
                           >
                             Search for the housing you have lived in, and write
-                            a review! 
+                            a review!
                           </Typography>
                         </div>
                       </Fade>

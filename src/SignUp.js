@@ -15,6 +15,9 @@ import Footer from "./components/Footer";
 import { fetchMemberByUserId, postMember } from "./api";
 import { CircularProgress } from "@material-ui/core";
 import { useCookies } from "react-cookie";
+import { Helmet } from "react-helmet";
+
+const TITLE = "Sign Up";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -55,18 +58,16 @@ export default function SignUp() {
       setInvalidIn(true);
       setInvalidUserId(false);
       setShortPass(false);
-    } 
-    else if(pass.length < 6){
-        setInvalidIn(false);
-        setInvalidUserId(false);
-        setShortPass(true);
-    }
-    else {
+    } else if (pass.length < 6) {
+      setInvalidIn(false);
+      setInvalidUserId(false);
+      setShortPass(true);
+    } else {
       setLoading(true);
       setInvalidIn(false);
       fetchMemberByUserId(userId).then(
         (response) => {
-            setShortPass(false);
+          setShortPass(false);
           if (response.length === 0) {
             const promise = postMember({
               user_id: userId,
@@ -104,6 +105,9 @@ export default function SignUp() {
 
   return (
     <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>

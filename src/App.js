@@ -1,12 +1,11 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import ProfilePage from "./ProfilePage";
 import SearchPage from "./SearchPage";
 import SearchDetail from "./SearchDetail";
@@ -18,7 +17,6 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 
 function App() {
-  const history = useHistory();
 
   return (
     <>
@@ -26,31 +24,31 @@ function App() {
       <Router>
         <main>
         <Switch>
-          <Route path="/" exact={true}>
+          <Route data-testid="path" path="/" exact={true}>
             <HomePage />
           </Route>
-          <Route path="/search" exact={true}>
+          <Route data-testid="path" path="/search" exact={true}>
             <SearchPage />
           </Route>
-          <Route path="/create" exact={true}>
+          <Route data-testid="path" path="/create" exact={true}>
             <CreateReview />
           </Route>
-          <Route path="/create/:id" exact={true}>
+          <Route data-testid="path" path="/create/:id" exact={true}>
             <CreateReview />
           </Route>
-          <Route path="/detail/:id" exact={true}>
+          <Route data-testid="path" path="/detail/:id" exact={true}>
             <SearchDetail />
           </Route>
-          <Route path="/profile" exact={true}>
+          <Route data-testid="path" path="/profile" exact={true}>
             <ProfilePage />
           </Route>
-          <Route path="/login" exact={true}>
+          <Route data-testid="path" path="/login" exact={true}>
             <Login />
           </Route>
-          <Route path="/signup" exact={true}>
+          <Route data-testid="path" path="/signup" exact={true}>
             <SignUp />
           </Route>
-          <Route path="*">
+          <Route data-testid="path" path="*">
             <PageNotFound />
           </Route>
         </Switch>

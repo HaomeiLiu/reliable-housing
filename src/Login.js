@@ -15,6 +15,9 @@ import Footer from "./components/Footer";
 import { fetchMemberByUserId } from "./api";
 import { CircularProgress } from "@material-ui/core";
 import {useCookies} from "react-cookie";
+import {Helmet} from "react-helmet";
+
+const TITLE = 'Login';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -105,6 +108,7 @@ export default function Login() {
 
   return (
     <>
+        <Helmet><title>{TITLE}</title></Helmet>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>

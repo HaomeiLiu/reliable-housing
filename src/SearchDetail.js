@@ -11,7 +11,9 @@ import { Paper } from "@material-ui/core";
 import Footer from "./components/Footer";
 import { FixStarRating } from "./components/StarRating";
 import Button from "@material-ui/core/Button";
-import {useCookies} from "react-cookie";
+import {Helmet} from "react-helmet";
+
+const TITLE = 'Search Detail';
 
 const useStyles = makeStyles((theme) => ({
   subTitle: {
@@ -58,6 +60,9 @@ export default function SearchDetail() {
 
   return (
     <>
+    <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <AppBarSearch />
       <React.Fragment>
         <CssBaseline />

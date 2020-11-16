@@ -10,6 +10,9 @@ import { useParams } from "react-router-dom";
 import { fetchHousing } from "./api";
 import { VarStarRating } from "./components/StarRating";
 import AppBarSearch from "./components/AppBarSearch";
+import { Helmet } from "react-helmet";
+
+const TITLE = "Create Review";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -64,37 +67,42 @@ export default function CreateReview() {
     });
   }, [id]);
 
-  function handleSubmit(){
+  function handleSubmit() {
     setSubmit(true);
   }
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <AppBarSearch />
-      <main className={classes.layout}>
-        <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
-            {`Review for ${housing.address}`}
-          </Typography>
-          <React.Fragment>
-            <div className={classes.rating}>
-              <VarStarRating submit={submit} housing={housing}/>
+    <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
+      <React.Fragment>
+        <CssBaseline />
+        <AppBarSearch />
+        <main className={classes.layout}>
+          <Paper className={classes.paper}>
+            <Typography component="h1" variant="h4" align="center">
+              {`Review for ${housing.address}`}
+            </Typography>
+            <React.Fragment>
+              <div className={classes.rating}>
+                <VarStarRating submit={submit} housing={housing} />
+              </div>
+            </React.Fragment>
+            <div className={classes.buttons}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
             </div>
-          </React.Fragment>
-          <div className={classes.buttons}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
-          </div>
-        </Paper>
-      </main>
-      <Footer />
-    </React.Fragment>
+          </Paper>
+        </main>
+        <Footer />
+      </React.Fragment>
+    </>
   );
 }

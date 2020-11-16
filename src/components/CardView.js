@@ -12,6 +12,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import Create from "@material-ui/icons/Create";
 import { addFav, fetchMember } from "../api";
 import { useCookies } from "react-cookie";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -61,7 +62,7 @@ export default function CardView({ housings, login }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const classes = useStyles();
   const [member, setMember] = React.useState({
-    fav:[],
+    fav: [],
   });
   React.useEffect(() => {
     fetchMember(cookies.user_id_db).then((response) => {
@@ -84,14 +85,25 @@ export default function CardView({ housings, login }) {
   return (
     <Grid container spacing={4}>
       {housings.map((housing) => (
-        <Grid item key={housing.id} xs={12} sm={6} md={4}>
+        <Grid
+          data-testid="housing_container"
+          item
+          key={housing.id}
+          xs={12}
+          sm={6}
+          md={4}
+        >
           <Card className={classes.card}>
             <CardActionArea onClick={() => handleCardClick(housing)}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={housing.img}
-                title="Image title"
-              />
+              {housing.img ? (
+                <CardMedia
+                  className={classes.cardMedia}
+                  src={housing.img}
+                  title="Image title"
+                />
+              ) : (
+                <CircularProgress />
+              )}
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {housing.address}
@@ -101,14 +113,15 @@ export default function CardView({ housings, login }) {
             </CardActionArea>
             <CardActions>
               <Button
+                data-testid="fav-btn"
                 size="small"
                 disabled={
                   login
-                    ? (member.fav.filter((f) => {
+                    ? member.fav.filter((f) => {
                         return f === housing.id;
                       }).length === 0
                       ? false
-                      : true)
+                      : true
                     : true
                 }
                 onClick={() => handleFavClick(housing)}
@@ -116,9 +129,11 @@ export default function CardView({ housings, login }) {
                 <div className={classes.favIcon}>
                   <Favorite />
                 </div>
-                {(member.fav.filter((f) => {
-                        return f === housing.id;
-                      })).length === 0 ? "Fav" : "Added"}
+                {member.fav.filter((f) => {
+                  return f === housing.id;
+                }).length === 0
+                  ? "Fav"
+                  : "Added"}
               </Button>
               <Button
                 size="small"

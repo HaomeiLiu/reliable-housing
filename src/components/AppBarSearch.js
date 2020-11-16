@@ -129,7 +129,11 @@ export default function AppBarSearch() {
                 <AccountCircle />
               </IconButton>
             ) : (
-              <Button color="inherit" onClick={handleLoginClick}>
+              <Button
+                data-testid="login"
+                color="inherit"
+                onClick={handleLoginClick}
+              >
                 Login
               </Button>
             )}

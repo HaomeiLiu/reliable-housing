@@ -7,9 +7,12 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import CardView from "./components/CardView";
 import Footer from "./components/Footer";
-import {useCookies} from "react-cookie";
-import {fetchHousings, fetchMatchHousing} from "./api";
+import { useCookies } from "react-cookie";
+import { fetchHousings, fetchMatchHousing } from "./api";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
+const TITLE = "Search";
 
 const useStyles = makeStyles((theme) => ({
   subTitle: {
@@ -25,28 +28,30 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchPage() {
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [login, setLogin] = useState(false);
   const [housings, setHousings] = useState([]);
   const key = useLocation().search;
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     if (cookies.user_id) {
       setLogin(true);
     }
-    if(key === ""){
-      fetchHousings().then((response)=>{
+    if (key === "") {
+      fetchHousings().then((response) => {
         setHousings(response);
-      })
-    }
-    else{
+      });
+    } else {
       fetchMatchHousing(key).then((response) => {
         setHousings(response);
-      })
+      });
     }
   }, []);
   return (
     <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <AppBarSearch />
       <React.Fragment>
         <CssBaseline />
@@ -56,7 +61,7 @@ export default function SearchPage() {
           </Grid>
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
-            <CardView housings={housings} login={login}/>
+            <CardView housings={housings} login={login} />
           </Container>
         </main>
         <Footer />

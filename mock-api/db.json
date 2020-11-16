@@ -4,7 +4,7 @@
       "id": 1,
       "address": "The Kenmore - 1331 W. 72 Street",
       "description": "Near USC campus, 15 minutes walk. 2B2B and 3B3B available. Within DPS area, utilities included.",
-      "img":"https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/1.jpg",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/1.jpg",
       "reviews": [
         {
           "user_id": 18,
@@ -26,7 +26,7 @@
       "id": 2,
       "address": "Appolo - 1033 E. 21 Place",
       "description": "A warm home to stay in. Pets allowed. Near CVS, Target, and DMV.",
-      "img":"https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/2.jpg",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/2.jpg",
       "reviews": [
         {
           "user_id": 18,
@@ -48,7 +48,7 @@
       "id": 3,
       "address": "1290 W. 88 Street",
       "description": "A 3rd house for testing.",
-      "img"  : "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/3.jpg",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/3.jpg",
       "reviews": [
         {
           "user_id": 18,
@@ -63,7 +63,7 @@
       "id": 4,
       "address": "55 Street",
       "description": "a 55 house",
-      "img":"https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/4.jpg",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/4.jpg",
       "reviews": []
     }
   ],

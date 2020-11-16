@@ -9,6 +9,10 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import {Helmet} from "react-helmet";
+import Footer from "./components/Footer";
+
+const TITLE = 'Profile';
 
 const useStyles = makeStyles((theme) => ({
   subTitle: {
@@ -77,6 +81,9 @@ export default function Profile() {
 
   return (
     <>
+    <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <AppBarSearch />
       <div className={classes.btnCont}>
       <Button onClick={handleLogoutClick} variant="outlined" color="secondary" className={classes.btn}>Logout</Button>
@@ -85,9 +92,9 @@ export default function Profile() {
         <Grid container spacing={4} className={classes.subTitle}>
           <Typography variant="h3">Favorite Housing</Typography>
         </Grid>
-        {/* End hero unit */}
         {ready && <CardViewProfile housings={housings} login={login} />}
       </Container>
+      <Footer/>
     </>
   );
 }

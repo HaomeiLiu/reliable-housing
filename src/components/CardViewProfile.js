@@ -6,7 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { CardActionArea } from "@material-ui/core";
+import { CardActionArea, CircularProgress } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Favorite from "@material-ui/icons/Favorite";
 import Create from "@material-ui/icons/Create";
@@ -91,14 +91,14 @@ export default function CardViewProfile({ housings, login }) {
   return (
     <Grid container spacing={4}>
       {housings.map((housing) => (
-        <Grid item key={housing[0].id} xs={12} sm={6} md={4}>
+        <Grid data-testid="card" item key={housing[0].id} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardActionArea onClick={() => handleCardClick(housing[0])}>
-              <CardMedia
+              {(housing.img) ? (<CardMedia
                 className={classes.cardMedia}
-                image={housing.img}
+                src={housing.img}
                 title="Image title"
-              />
+              />) : (<CircularProgress/>)}
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {housing[0].address}

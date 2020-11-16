@@ -1,23 +1,23 @@
 export function fetchHousings() {
-  return fetch("/housings").then((response) => {
+  return fetch("/api/housings").then((response) => {
     return response.json();
   });
 }
 
 export function fetchHousing(id) {
-  return fetch(`/housings/${id}`).then((response) => {
+  return fetch(`/api/housings/${id}`).then((response) => {
     return response.json();
   });
 }
 
 export function fetchMatchHousing(key){
-  return fetch(`/housings/${key}`).then((response) => {
+  return fetch(`/api/housings/${key}`).then((response) => {
     return response.json();
   })
 }
 
 export function fetchMemberByUserId(user_id) {
-  return fetch(`/members/?user_id=${user_id}`).then((response) => {
+  return fetch(`/api/members/?user_id=${user_id}`).then((response) => {
     if (response.status >= 400) {
       return Promise.reject("There was an error requesting the resource.");
     }
@@ -26,7 +26,7 @@ export function fetchMemberByUserId(user_id) {
 }
 
 export function fetchMember(id) {
-  return fetch(`/members/${id}`).then((response) => {
+  return fetch(`/api/members/${id}`).then((response) => {
     if (response.status >= 400) {
       return Promise.reject("There was an error requesting the resource.");
     }
@@ -35,7 +35,7 @@ export function fetchMember(id) {
 }
 
 export function postMember(data) {
-  return fetch("/members", {
+  return fetch("/api/members", {
     method: "post",
     body: JSON.stringify(data),
     headers: {
@@ -47,7 +47,7 @@ export function postMember(data) {
 }
 
 export function addFav(data){
-  return fetch(`/members/${data.id}`,{
+  return fetch(`/api/members/${data.id}`,{
     method: "put",
     body: JSON.stringify(data),
     headers:{
@@ -59,7 +59,7 @@ export function addFav(data){
 }
 
 export function postReview(data){
-  return fetch(`/housings/${data.id}`,{
+  return fetch(`/api/housings/${data.id}`,{
     method: "put",
     body: JSON.stringify(data),
     headers:{
