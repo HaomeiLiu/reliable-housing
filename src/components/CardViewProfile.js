@@ -96,7 +96,7 @@ export default function CardViewProfile({ housings, login }) {
             <CardActionArea onClick={() => handleCardClick(housing[0])}>
               {(housing[0].img) ? (<CardMedia
                 className={classes.cardMedia}
-                src={housing.img}
+                src={housing[0].img}
                 title="Image title"
               />) : (<CircularProgress/>)}
               <CardContent className={classes.cardContent}>
