@@ -76,8 +76,6 @@ export default function AppBarSearch() {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    loginStatus = (typeof cookies.user_id === "undefined" || cookies.user_id  === "undefined") ? false : true;
-    console.log(isLogin);
     setIsLogin(loginStatus);
   }, [cookies, loginStatus]);
 
