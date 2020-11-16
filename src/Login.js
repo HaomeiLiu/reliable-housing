@@ -166,6 +166,7 @@ export default function Login() {
               fullWidth
               variant="contained"
               color="primary"
+              data-testid="submit"
               className={classes.submit}
             >
               {loading ? <CircularProgress /> : <>Sign In</>}

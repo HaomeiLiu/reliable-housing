@@ -73,7 +73,6 @@ export default function CardView({ housings, login }) {
   function handleFavClick(housing) {
     const newFavs = member.fav;
     newFavs.push(housing.id);
-    console.log(newFavs);
     addFav({
       ...member,
       fav: newFavs,
@@ -136,6 +135,7 @@ export default function CardView({ housings, login }) {
               </Button>
               <Button
                 size="small"
+                data-testid="review-btn"
                 disabled={!login}
                 onClick={() => handleReviewClick(housing)}
               >

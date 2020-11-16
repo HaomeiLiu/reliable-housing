@@ -74,7 +74,7 @@ export default function SearchDetail() {
             <Paper className={classes.paper}>
               <Container maxWidth="md" className={classes.detailGrid}>
                 <Grid container spacing={4} className={classes.subTitle}>
-                  <Typography variant="h3">{housing.address}</Typography>
+                  <Typography data-testid="address" variant="h3">{housing.address}</Typography>
                 </Grid>
               </Container>
               <Container maxWidth="md" className={classes.detailGrid}>
@@ -99,7 +99,7 @@ export default function SearchDetail() {
                 </Typography>
                 <Grid container spacing={2}>
                   {housing.reviews.map((review) => {
-                    return <FixStarRating review={review} key={review.user_id}/>;
+                    return <FixStarRating data-testid="fix-star" review={review} key={review.user_id}/>;
                   })}
                 </Grid>
               </Container>

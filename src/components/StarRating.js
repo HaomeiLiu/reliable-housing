@@ -51,10 +51,10 @@ export function FixStarRating({ review }) {
               <Typography component="legend">Safety</Typography>
             </Grid>
             <Grid item xs={3} container direction="column" spacing={2}>
-              <Rating name="disabled" data-testid="fix-general" data-value={review.general} value={review.general} disabled />
-              <Rating name="disabled" value={review.price} disabled />
-              <Rating name="disabled" value={review.distance} disabled />
-              <Rating name="disabled" value={review.safety} disabled />
+              <Rating name="disabled" data-testid={review.general} value={review.general} disabled />
+              <Rating name="disabled" data-testid={review.price} value={review.price} disabled />
+              <Rating name="disabled" data-testid={review.distance} value={review.distance} disabled />
+              <Rating name="disabled" data-testid={review.safety} value={review.safety} disabled />
             </Grid>
             <Grid item xs={1}></Grid>
           </Grid>

@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import React from "react";
 import CardViewProfile from "./components/CardViewProfile";
 
@@ -24,4 +24,9 @@ const housings = [[
 test("Check that 2 cards are rendered", ()=>{
     const {getAllByTestId} = render(<CardViewProfile housings={housings} login={true} />);
     expect(getAllByTestId("card").length).toBe(1);
+})
+
+test("Check that nothing rendered when not logged in", ()=>{
+  const {getAllByTestId} = render(<CardViewProfile housings={housings} login={false} />);
+  expect(getAllByTestId("card").length).toBe(1);
 })

@@ -109,6 +109,7 @@ export default function CardViewProfile({ housings, login }) {
             <CardActions>
               <Button
                 size="small"
+                data-testid="remove-btn"
                 onClick={() => handleRemoveClick(housing[0])}
               >
                 <div className={classes.favIcon}>
