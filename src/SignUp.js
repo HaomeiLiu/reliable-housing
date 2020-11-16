@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  console.log(cookies);
 
   const classes = useStyles();
 

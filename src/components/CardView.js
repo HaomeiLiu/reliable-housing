@@ -59,7 +59,7 @@ function handleReviewClick(housing) {
 }
 
 export default function CardView({ housings, login }) {
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
   const classes = useStyles();
   const [member, setMember] = React.useState({
     fav: [],
@@ -67,7 +67,6 @@ export default function CardView({ housings, login }) {
   React.useEffect(() => {
     fetchMember(cookies.user_id_db).then((response) => {
       setMember(response);
-      console.log(member);
     });
   }, [cookies]);
 
@@ -98,7 +97,7 @@ export default function CardView({ housings, login }) {
               {housing.img ? (
                 <CardMedia
                   className={classes.cardMedia}
-                  src={housing.img}
+                  image={housing.img}
                   title="Image title"
                 />
               ) : (

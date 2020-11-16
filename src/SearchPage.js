@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchPage() {
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
   const [login, setLogin] = useState(false);
   const [housings, setHousings] = useState([]);
   const key = useLocation().search;
@@ -46,7 +46,7 @@ export default function SearchPage() {
         setHousings(response);
       });
     }
-  }, []);
+  }, [cookies.user_id, key]);
   return (
     <>
       <Helmet>

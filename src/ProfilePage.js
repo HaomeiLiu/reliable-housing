@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import CardViewProfile from "./components/CardViewProfile";
 import { fetchMember, fetchHousings } from "./api";
@@ -33,15 +32,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Profile() {
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies, removeCookie] = useCookies(["user"]);
   const [login, setLogin] = React.useState(false);
   const [housings, setHousings] = useState([]);
   const [member, setMember] = useState({
     fav: [],
   });
   const [ready, setReady] = useState(false);
-
-  // const history = useHistory();
 
   function handleLogoutClick() {
     removeCookie("user");
@@ -61,7 +58,7 @@ export default function Profile() {
         setMember(response);
       });
     }
-  }, [login]);
+  }, [login, cookies.user_id_db]);
 
   useEffect(() => {
       setReady(false);
@@ -75,7 +72,6 @@ export default function Profile() {
       });
       setHousings(favHousing);
       setReady(true);
-      console.log(housings);
     });
   }, [member]);
 

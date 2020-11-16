@@ -127,7 +127,7 @@ function handleSearchClick() {
 
 export default function HomePage() {
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
   const [login, setLogin] = React.useState(false);
 
   const [open, setOpen] = React.useState(false);

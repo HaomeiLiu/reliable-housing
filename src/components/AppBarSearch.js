@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AppBarSearch() {
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
   let loginStatus = typeof cookies.user_id === "undefined" ? false : true;
   const [isLogin, setIsLogin] = useState(loginStatus);
   const [searchInput, setSearchInput] = useState("");

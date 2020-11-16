@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ButtonAppBar from "./components/ButtonAppBar";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
@@ -54,10 +53,6 @@ export default function CreateReview() {
   const { id } = useParams();
 
   const [housing, setHousing] = useState({});
-  // const [generalValue, setGeneralValue] = useState(0);
-  // const [priceValue, setPriceValue] = useState(0);
-  // const [distanceValue, setDistanceValue] = useState(0);
-  // const [safetyValue, setSafetyValue] = useState(0);
   const [submit, setSubmit] = useState(false);
 
   useEffect(() => {

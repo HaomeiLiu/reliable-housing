@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchHousing } from "./api";
 import { Paper } from "@material-ui/core";
 import Footer from "./components/Footer";
