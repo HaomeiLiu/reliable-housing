@@ -1,3 +1,13 @@
+[Repo URL](https://github.com/HaomeiLiu/reliable-housing)
+
+[Reliable Housing Website](https://pedantic-mccarthy-9c142e.netlify.app/)
+
+[YouTube Demo Link](https://youtu.be/HET2PyKRuok)
+
+[Heroku Link](https://reliable-housing.herokuapp.com/api/)
+
+![test_result](/assets/test_result.jpg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
