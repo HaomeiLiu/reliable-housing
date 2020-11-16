@@ -14,10 +14,10 @@ import Container from "@material-ui/core/Container";
 import Footer from "./components/Footer";
 import { fetchMemberByUserId } from "./api";
 import { CircularProgress } from "@material-ui/core";
-import {useCookies} from "react-cookie";
-import {Helmet} from "react-helmet";
+import { useCookies } from "react-cookie";
+import { Helmet } from "react-helmet";
 
-const TITLE = 'Login';
+const TITLE = "Login";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", 
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const classes = useStyles();
 
@@ -53,10 +53,10 @@ export default function Login() {
   const [pass, setPass] = useState("");
 
   useEffect(() => {
-    if(cookies.setUser){
+    if (cookies.setUser) {
       setUserId(cookies.setUser);
     }
-    if(cookies.setPass){
+    if (cookies.setPass) {
       setPass(cookies.setPass);
     }
   }, [cookies.setUser, cookies.setPass]);
@@ -67,8 +67,7 @@ export default function Login() {
       setInvalidIn(true);
       setInvalidId(false);
       setInvalidPass(false);
-    } 
-    else {
+    } else {
       setLoading(true);
       setInvalidIn(false);
       const promise = fetchMemberByUserId(userId);
@@ -77,22 +76,27 @@ export default function Login() {
           //Check Password
           setLoading(false);
           console.log(result[0]);
-          if (result[0].pass === pass) {
-          //Correct
-            if(e.target.remember.checked){
-              setCookie("setUser", userId);
-              setCookie("setPass", pass);
+          if (result[0]) {
+            if (result[0].pass === pass) {
+              //Correct
+              if (e.target.remember.checked) {
+                setCookie("setUser", userId);
+                setCookie("setPass", pass);
+              } else {
+                removeCookie("setPass");
+              }
+              setCookie("user_id", userId);
+              setCookie("user_id_db", result[0].id);
+              window.location.href = "/";
+            } else {
+              setInvalidPass(true);
+              setInvalidId(false);
+              setPass("");
             }
-            else{
-              removeCookie("setPass");
-            }
-            setCookie("user_id", userId);
-            setCookie("user_id_db", result[0].id);
-            window.location.href = "/";
-          } 
-          else {
-            setInvalidPass(true);
-            setInvalidId(false);
+          } else {
+            setLoading(false);
+            setInvalidId(true);
+            setInvalidPass(false);
             setPass("");
           }
         },
@@ -108,7 +112,9 @@ export default function Login() {
 
   return (
     <>
-        <Helmet><title>{TITLE}</title></Helmet>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -145,7 +151,14 @@ export default function Login() {
               onChange={(e) => setPass(e.target.value)}
             />
             <FormControlLabel
-              control={<Checkbox name="remember" id="remember" value="remember" color="primary" />}
+              control={
+                <Checkbox
+                  name="remember"
+                  id="remember"
+                  value="remember"
+                  color="primary"
+                />
+              }
               label="Remember me"
             />
             <Button
@@ -159,7 +172,7 @@ export default function Login() {
             </Button>
             <Grid container>
               <Grid item xs>
-              {invalidIn && (
+                {invalidIn && (
                   <Typography variant="body2" color="secondary">
                     Please fill in all fields.
                   </Typography>

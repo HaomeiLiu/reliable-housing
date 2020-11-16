@@ -131,6 +131,7 @@ export default function HomePage() {
   const [login, setLogin] = React.useState(false);
 
   const [open, setOpen] = React.useState(false);
+  console.log(cookies);
 
   React.useEffect(() => {
     if (cookies.user_id) {
