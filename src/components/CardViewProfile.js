@@ -94,7 +94,7 @@ export default function CardViewProfile({ housings, login }) {
         <Grid data-testid="card" item key={housing[0].id} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardActionArea onClick={() => handleCardClick(housing[0])}>
-              {(housing.img) ? (<CardMedia
+              {(housing[0].img) ? (<CardMedia
                 className={classes.cardMedia}
                 src={housing.img}
                 title="Image title"
