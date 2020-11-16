@@ -69,7 +69,7 @@ export function VarStarRating({submit, housing}) {
   const [priceValue, setPriceValue] = useState(0);
   const [distanceValue, setDistanceValue] = useState(0);
   const [safetyValue, setSafetyValue] = useState(0);
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
 
   if(submit){
     const newReviews = housing.reviews;

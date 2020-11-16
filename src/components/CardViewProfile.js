@@ -66,7 +66,7 @@ function removeArray(arr, value) {
   }
 
 export default function CardViewProfile({ housings, login }) {
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
   const classes = useStyles();
   const [member, setMember] = React.useState({
     fav:[],
