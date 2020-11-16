@@ -65,6 +65,34 @@
       "description": "a 55 house",
       "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/4.jpg",
       "reviews": []
+    },
+    {
+      "id": 5,
+      "address": "USC Housing 5",
+      "description": "Write a description for this housing",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/5.jpg",
+      "reviews": []
+    },
+    {
+      "id": 6,
+      "address": "USC Housing 6",
+      "description": "Write a description for this housing",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/5.jpg",
+      "reviews": []
+    },
+    {
+      "id": 7,
+      "address": "USC Housing 7",
+      "description": "Write a description for this housing",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/5.jpg",
+      "reviews": []
+    },
+    {
+      "id": 8,
+      "address": "USC Housing 8",
+      "description": "Write a description for this housing",
+      "img": "https://raw.githubusercontent.com/HaomeiLiu/reliable-housing/main/assets/5.jpg",
+      "reviews": []
     }
   ],
   "members": [
