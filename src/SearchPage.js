@@ -34,7 +34,7 @@ export default function SearchPage() {
   const key = useLocation().search;
 
   useEffect(() => {
-    if (cookies.user_id) {
+    if (cookies.user_id && cookies.user_id !== "undefined") {
       setLogin(true);
     }
     if (key === "") {
