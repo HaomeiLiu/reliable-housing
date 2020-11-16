@@ -71,13 +71,15 @@ const useStyles = makeStyles((theme) => ({
 export default function AppBarSearch() {
   const classes = useStyles();
   const [cookies] = useCookies(["user"]);
-  let loginStatus = typeof cookies.user_id === "undefined" ? false : true;
+  let loginStatus = (typeof cookies.user_id === "undefined" || cookies.user_id  === "undefined") ? false : true;
   const [isLogin, setIsLogin] = useState(loginStatus);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    setIsLogin(typeof cookies.user_id === "undefined" ? false : true);
-  }, [cookies]);
+    loginStatus = (typeof cookies.user_id === "undefined" || cookies.user_id  === "undefined") ? false : true;
+    console.log(isLogin);
+    setIsLogin(loginStatus);
+  }, [cookies, loginStatus]);
 
   function handleLoginClick() {
     window.location.href = "/login";
