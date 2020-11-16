@@ -134,7 +134,7 @@ export default function HomePage() {
   console.log(cookies);
 
   React.useEffect(() => {
-    if (cookies.user_id) {
+    if (cookies.user_id && cookies.user_id !== "undefined") {
       setLogin(true);
     }
   }, [cookies]);
