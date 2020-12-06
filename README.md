@@ -1,12 +1,21 @@
-[Repo URL](https://github.com/HaomeiLiu/reliable-housing)
+# Reliable Housing #
+## Introduction ##
+A [Website](https://pedantic-mccarthy-9c142e.netlify.app/) that aims to provide transparent off-campus housing information for USC students, written in React. The website is created for USC ITP404's final project in front end web development.
 
-[Reliable Housing Website](https://pedantic-mccarthy-9c142e.netlify.app/)
+*A quick demo of the website is available on Youtube [here](https://youtu.be/HET2PyKRuok).*
 
-[YouTube Demo Link](https://youtu.be/HET2PyKRuok)
-
-[Heroku Link](https://reliable-housing.herokuapp.com/api/)
+A mock api is created and deployed through Heroku, with [API access point](https://reliable-housing.herokuapp.com/api/). 
 
 ![test_result](/assets/test_result.jpg)
+
+## Library ##
+The project uses the following libraries:
+- Material UI: the website uses Material UI and references its examples.
+- json-server: mock api for testing purposes
+- react-router-dom: routing, redirection, 404
+- react-cookie: record the login status of users
+- miragejs: unit test
+- react-helmet: add title for each page
 
 # Getting Started with Create React App
 
